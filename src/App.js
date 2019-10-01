@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from 'styled-components';
+import SearchForm from './components/search-form';
+import { StateProvider } from './state';
+import { initialState } from './state/initial';
+import { reducer } from './state/reducer';
+import Repositories from './components/repositories';
+import ErrorMessage from './components/error-message';
+import { Container } from './styled-components/containers';
+import theme from './theme/variables';
+import { GlobalStyle } from './theme/global';
+import UserDetails from './components/user-details';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <ErrorMessage />
+        <Container>
+          <SearchForm />
+          <UserDetails />
+          <Repositories />
+        </Container>
+      </ThemeProvider>
+    </StateProvider>
   );
 }
 
