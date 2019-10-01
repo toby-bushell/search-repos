@@ -17,6 +17,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <ErrorMessage />
+        {/* Would extract the below components to a 
+        layout component once app evolves */}
         <Container>
           <SearchForm />
           <UserDetails />
