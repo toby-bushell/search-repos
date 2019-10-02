@@ -27,6 +27,7 @@ export const getUsersRepos = async (username, userType, query = null) => {
   if (query) apiPathToFetch = `${apiPathToFetch}?sort=${query}`;
 
   const response = await fetch(`${GITHUB_API}/${apiPathToFetch}`);
+
   if (response.status !== 200) {
     throw new Error(`Unable to fetch repos`);
   }

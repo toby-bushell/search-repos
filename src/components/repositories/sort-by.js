@@ -3,7 +3,7 @@ import { getUsersRepos } from '../../api';
 import { useStateValue } from '../../state';
 import { SortByWrapper } from './styles';
 
-// TODO: Add slider filters for star rating etc rather than sort
+// TODO: Add slider filters for star rating if search api used
 const SortBy = () => {
   const [{ user, activeSort, loading }, dispatch] = useStateValue();
 
@@ -36,6 +36,9 @@ const SortBy = () => {
         disabled={loading}
         id='repo-sort'
       >
+        <option disabled selected value=''>
+          choose an option
+        </option>
         <option value='full_name'>Full name</option>
         <option value='updated'>Updated</option>
       </select>
